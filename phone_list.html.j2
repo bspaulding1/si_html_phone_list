@@ -1,0 +1,70 @@
+<HTML>
+<HEAD>
+    <TITLE>PresCab 2022 Phone List</TITLE>
+    <style>
+        html * {
+            font-size: 32px;
+            color: #2020131;
+            font-family: Nunito, sans-serif;
+        }
+        h1 {
+            font-size: 64px;
+            position: sticky;
+            top: 0px;
+            # z-index: 100px;
+            background: white;
+        }
+        table, th, td {
+            border-collapse: collapse;
+            border-bottom: 1px solid;
+        }
+        table {
+            width: 100%;
+        }
+        th, td {
+            vertical-align: middle;
+            padding: 15px;
+            padding-top: 20px;
+        }
+        th {
+            font-size: 48px;
+            position: sticky;
+            top: 64px;  /* 0px if you don't have a navbar, but something is required */
+            background: white;
+        }
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+        button {
+            width: 100%;
+            padding: 16px;
+            border-radius: 12px;
+        }
+    </style>
+</HEAD>
+<BODY>
+    <H1 ALIGN="center">SI Auction 2023 Phone List</H1>
+    <TABLE>
+        <TR>
+            <TH ALIGN="left">Last</TH>
+            <TH ALIGN="left">First</TH>
+            <TH WIDTH="40px" ALIGN="center">ID</TH>
+            <TH ALIGN="center">Mobile</TH>
+            <TH ALIGN="center">Home</TH>
+        </TR>
+        {%- for item in items %}
+        <TR>
+            <TD>{{item['Last Name']}}</TD>
+            <TD>{{item['First Name']}}</TD>
+            <TD WIDTH="40px">{{item['ID']}}</TD>
+            <TD ALIGN="center"><A HREF="tel:{{item['Cell Phone']}}"><BUTTON>Mobile</BUTTON></A></TD>
+            {%- if item['Home Phone']|length %}
+            <TD ALIGN="center"><A HREF="tel:{{item['Home Phone']}}"><BUTTON>Home</BUTTON></A></TD>
+            {% else %}
+            <TD ALIGN="center"></TD>
+            {%- endif %}
+        </TR>
+        {%- endfor %}
+    </TABLE>
+</BODY>
+</HTML>
